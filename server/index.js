@@ -3,10 +3,7 @@ const mongoose= require('mongoose');
 const bodyParser= require('body-parser'); 
 const cors = require('cors');
 require('./routes/posts.js');
-
 const app=express();
-
-
 require('./db/conn');
 
 //app.use(bodyParser.json({limit:"30mb", extended: true }));
@@ -24,12 +21,6 @@ require('./db/conn');
     app.use(express.json());
     
 
-    app.get('/' , (req, res)=> {
-        res.send("this works");
-    });
-    app.get('/about',middleware, (req,res)=>{
-        res.send("about page");
-  });
 
 
 app.listen(5000, () => {

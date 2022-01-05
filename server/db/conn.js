@@ -14,8 +14,8 @@ async function main() {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     const collection = db.collection('USER');
-    const insertResult = await collection.insertMany([{ username: 'meenal' }, { lang: 'meenal2123' }]);
-    console.log('Inserted documents =>', insertResult);
+   // const insertResult = await collection.insertMany([{ username: 'meenal' }, { lang: 'meenal2123' }]);
+   // console.log('Inserted documents =>', insertResult);
 
 
     // the following code examples can be pasted here...
