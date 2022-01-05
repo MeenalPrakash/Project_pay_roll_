@@ -4,10 +4,10 @@ const router = express.Router();
 const app=express();
 require('../db/conn');
 
-router.get('/' , (req, res)=> {
+app.get('/' , (req, res)=> {
     res.send("this works");
 });
-router.get('/about', (req,res)=>{
+app.get('/about', (req,res)=>{
       res.send("about page");
 });
 router.get('/dashboard', (req,res)=>{
@@ -16,8 +16,17 @@ router.get('/dashboard', (req,res)=>{
      {
          return res.status(402).json({ error:" please fill the enteries properly"});
      }
-     User.findOne({name:name})
-     .then()
+     User2.findOne({name:name})
+     .then((checking) => {
+         if(checking)
+         {
+             if(password == password)
+             {
+                 return res.send("aunthentication done");
+             }
+         }
+
+     })
 
       res.send("dashboard");
 });

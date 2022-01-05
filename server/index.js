@@ -2,21 +2,46 @@ const express = require('express');
 const mongoose= require('mongoose');
 const bodyParser= require('body-parser'); 
 const cors = require('cors');
-const postRouter = require('./routes/posts.js');
+require('./routes/posts.js');
 
 const app=express();
-//app.use('/posts' , postRouter);
+
+
 require('./db/conn');
 
 //app.use(bodyParser.json({limit:"30mb", extended: true }));
 //app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));
-//app.use(cors());
+//app.use(cors(
 
 
+    const middleware = (req,res,next) => {
+        console.log("this is my middleware");
+        next();
+    }
+    
+    
+    app.use(middleware);
+    app.use(express.json());
+    
 
+    app.get('/' , (req, res)=> {
+        res.send("this works");
+    });
+    app.get('/about',middleware, (req,res)=>{
+        res.send("about page");
+  });
+
+
+app.listen(5000, () => {
+    console.log("server is running at port 5000");
+})
 
 
 const PORT = process.env.PORT || 5000;
+
+
+
+
 
 
 
